@@ -1,29 +1,25 @@
 window.onload = function () {
     const song = document.getElementById("song");
-    song.muted = false;
-    song.play().catch(() => {});
+
+    // Attempt to play automatically
+    song.play().catch(() => {
+        // If autoplay fails, wait for user interaction
+        const resumeAudio = () => {
+            song.play();
+            document.removeEventListener("click", resumeAudio);
+        };
+        document.addEventListener("click", resumeAudio);
+    });
 
     // Collage setup
     const collage = document.getElementById("collage");
-    const imageCount = 80; // Adjust based on how many images you have
+    const imageCount = 75;
     const folder = "collage/";
-    const ext = ".jpg"; // Change if you use .png, etc.
+    const ext = ".jpg";
 
-    for (let i = 1; i <= imageCount; i++) {
+    for (let i = 1; i <= imageCount * 2; i++) {
         const img = document.createElement("img");
-        img.src = `${folder}${i}${ext}`;
-        collage.appendChild(img);
-    }
-
-    // Repeat images to cover the full scroll area
-    for (let i = 1; i <= imageCount; i++) {
-        const img = document.createElement("img");
-        img.src = `${folder}${i}${ext}`;
+        img.src = `${folder}${(i - 1) % imageCount + 1}${ext}`;
         collage.appendChild(img);
     }
 };
-
-document.addEventListener("click", function () {
-    const song = document.getElementById("song");
-    if (song.paused) song.play();
-});
