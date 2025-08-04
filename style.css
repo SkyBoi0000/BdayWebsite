@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'MyHandwriting';
+    src: url('MyHandwriting.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    background-color: #ffe6ec;
+    font-family: 'MyHandwriting', 'MedievalSharp', cursive;
+    position: relative;
+}
+
+/* Scrolling background collage */
+.collage-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 200%;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 0;
+    animation: scrollBackground 60s linear infinite;
+    opacity: 0.3;
+}
+
+.collage-background img {
+    width: 10vw;
+    height: 10vw;
+    object-fit: cover;
+    margin: 2px;
+}
+
+/* Infinite scroll */
+@keyframes scrollBackground {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Scroll */
+.scroll-image {
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: 0 auto;
+    animation: scrollOpen 2s ease-out forwards;
+    transform: scaleY(0);
+    transform-origin: top;
+}
+
+@keyframes scrollOpen {
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.scroll-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-content {
+    text-align: center;
+    width: 80%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #5c2b1a;
+}
+
+.scroll-content h1 {
+    font-size: 3rem;
+    margin: 0 0 10px;
+}
+
+.scroll-content p {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Fade-in animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
