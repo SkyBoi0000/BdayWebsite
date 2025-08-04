@@ -44,7 +44,7 @@ body {
     }
 }
 
-/* Scroll */
+/* Scroll image */
 .scroll-image {
     width: 90%;
     max-width: 800px;
@@ -63,6 +63,7 @@ body {
     }
 }
 
+/* Updated scroll-container to match scroll-image */
 .scroll-container {
     position: absolute;
     top: 0;
@@ -73,26 +74,34 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    pointer-events: none; /* so that the click for music works */
 }
 
+/* Restrict scroll-content inside the parchment area */
 .scroll-content {
-    text-align: center;
-    width: 80%;
+    width: 70%;
+    max-width: 700px;
+    padding: 2rem 1.5rem;
     position: absolute;
-    top: 25%;
+    top: 18%;
+    bottom: 15%;
     left: 50%;
     transform: translateX(-50%);
+    overflow: auto;
+    text-align: center;
     color: #5c2b1a;
+    pointer-events: auto; /* allow text selection etc. */
 }
 
 .scroll-content h1 {
-    font-size: 3rem;
-    margin: 0 0 10px;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .scroll-content p {
-    font-size: 1.5rem;
-    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
 }
 
 /* Fade-in animation */
